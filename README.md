@@ -1,6 +1,6 @@
 # Clean Architecture Kata
 
-We designed the Finance Domain using Aggregate Roots, Entities and Value Objects and we covered the uses cases with Unit Tests, run them in your first time here. The Domain and Unit Tests projects were implemented with .NET, the classes are as closed as possible.
+Kata to learn Clean Architecture and Hexagonal Architecture styles, you start with two use cases already implemented and the final solution has six use cases.
 
 ## :gem: Compiling from source
 
