@@ -35,29 +35,15 @@ namespace Manga.IntegrationTests
         }
 
         [Fact]
-        public async Task Register_Deposit_Withdraw_Close()
+        public async Task Register_GetCustomer()
         {
             Tuple<string, string> customerId_accountId = await Register(100);
             await GetCustomer(customerId_accountId.Item1);
-            await GetAccount(customerId_accountId.Item2);
-            await Withdraw(customerId_accountId.Item2, 100);
-            await GetCustomer(customerId_accountId.Item1);
-            await Deposit(customerId_accountId.Item2, 500);
-            await Deposit(customerId_accountId.Item2, 400);
-            await GetCustomer(customerId_accountId.Item1);
-            await Withdraw(customerId_accountId.Item2, 400);
-            await Withdraw(customerId_accountId.Item2, 500);
-            await Close(customerId_accountId.Item2);
         }
 
         private async Task GetCustomer(string customerId)
         {
             string result = await client.GetStringAsync("/api/Customers/" + customerId);
-        }
-
-        private async Task GetAccount(string accountId)
-        {
-            string result = await client.GetStringAsync("/api/Accounts/" + accountId);
         }
 
         private async Task<Tuple<string, string>> Register(double initialAmount)
@@ -85,46 +71,6 @@ namespace Manga.IntegrationTests
             string accountId = ((JContainer)customer["accounts"]).First["accountId"].Value<string>();
 
             return new Tuple<string, string>(customerId, accountId);
-        }
-
-        private async Task Deposit(string account, double amount)
-        {
-            var json = new
-            {
-                accountId = account,
-                amount = amount,
-            };
-
-            string data = JsonConvert.SerializeObject(json);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-            var response = await client.PatchAsync("api/Accounts/Deposit", content);
-            string result = await response.Content.ReadAsStringAsync();
-
-            response.EnsureSuccessStatusCode();
-        }
-
-        private async Task Withdraw(string account, double amount)
-        {
-            var json = new
-            {
-                accountId = account,
-                amount = amount,
-            };
-
-            string data = JsonConvert.SerializeObject(json);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-            var response = await client.PatchAsync("api/Accounts/Withdraw", content);
-            string result = await response.Content.ReadAsStringAsync();
-
-            response.EnsureSuccessStatusCode();
-        }
-
-        private async Task Close(string account)
-        {
-            var response = await client.DeleteAsync("api/Accounts/" + account);
-            response.EnsureSuccessStatusCode();
         }
     }
 
