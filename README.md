@@ -7,7 +7,7 @@ Kata to learn Clean Architecture and Hexagonal Architecture styles, you start wi
 Clone this repository to your machine, compile and test it:
 
 ```sh
-git clone https://github.com/ivanpaulovich/clean-architecture-kata-dojo.git
+git clone -b kata-initial https://github.com/ivanpaulovich/clean-architecture-kata-dojo.git
 cd clean-architecture-kata-dojo
 ./build.sh
 ```
