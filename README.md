@@ -40,3 +40,4 @@ Build a Clean Architecture application with six use cases starting from the exis
 
 ### :alien: Start by running the existing tests
 ### :alien: Create a Test Class for each use case
+### :alien: Design the Application Use Cases according to test specs
