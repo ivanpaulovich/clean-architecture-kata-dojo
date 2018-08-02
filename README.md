@@ -26,7 +26,7 @@ This project was designed do cover the following use cases and requirements:
 
 ## :memo: The Domain Model
 
-![Domain Model](https://raw.githubusercontent.com/ivanpaulovich/ddd-tdd-rich-domain/master/docs/ddd-tdd-rich-domain-model.png)
+![Domain Model](https://raw.githubusercontent.com/ivanpaulovich/ddd-tdd-rich-domain/final-solution/docs/ddd-tdd-rich-domain-model.png)
 
 ## :computer: Tech stuff
 
